@@ -1,106 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joshua Furman || Personal Portfolio</title>
+    <meta name="description" content="Joshua Furman - software developer: Python, C#, Java, game development, procedural generation, and a local-AI build pipeline on a two-GPU home rig.">
+    <meta property="og:title" content="Joshua Furman || Software Developer">
+    <meta property="og:description" content="Projects, games, and the local-AI pipeline behind them.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://jafurman.github.io/og-banner.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://jafurman.github.io/">
+    <meta name="theme-color" content="#0c0c18">
+    <link rel="canonical" href="https://jafurman.github.io/">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Joshua Furman || Software Developer</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+    <script>document.documentElement.className += ' js';</script>
+    <script src="script.js" defer></script>
+    <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+    <script type="module" src="hero3d.js"></script>
 </head>
 
 <body>
 
-<!-- Navigation bar (optional) -->
-<!-- Add links to navigate between sections -->
-<nav>
-    <h1> Joshua Furman's Personal Portfolio </h1>
-    <ul>
-        <li><a href="about.html">Quick Info</a></li>
-        <li><a href="projects.html">Project Page</a></li>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-    </ul>
-</nav>
+<header class="topbar">
+    <a class="brand" href="#top">Joshua Furman</a>
+    <nav class="links">
+        <a href="#work">Work</a>
+        <a href="#since">Since 2024</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-<!-- Profile and Contact Section -->
-<section id="profile-and-contact">
-        <div class="profile-container">
-            <img src="headshot2.png" alt="Profile Photo" class="profile-photo">
-            <p class="profile-text">Joshua Furman || Software Developer</p>
+<!-- the terrain canvas sits behind everything and the page scrolls over it -->
+<div class="hero-rig" id="top">
+    <div class="hero-canvas" id="hero" aria-hidden="true"></div>
+    <div class="hero-inner">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Software developer,<br>game maker, tinkerer.</h1>
+        <p class="lede">Python, C# and Java &mdash; plus a two&#8209;GPU home rig running local models
+           that builds games and tools alongside me.</p>
+        <div class="cta">
+            <a class="btn" href="#work">See the work</a>
+            <a class="btn ghost" href="https://jafurman.itch.io/" target="_blank" rel="noopener">Play on itch.io</a>
+            <a class="btn ghost" href="https://github.com/jafurman" target="_blank" rel="noopener">GitHub</a>
         </div>
+    </div>
+    <div class="walk-panel">
+        <span class="walk-title">ASCENSION / LIVE CAVE GENERATION</span>
+        <span id="walk-status">100 × 100 grid · center-out random walk</span>
+        <div><button id="walk-reset" type="button">New cave ↻</button><button id="walk-pause" type="button" aria-pressed="false">Pause animation</button></div>
+    </div>
+    <a class="scroll-cue" href="#work">Explore the work ↓</a>
+</div>
 
-    <div class="about-middle">
-        <table class="info-table">
-            <tr>
-                <td>Pronouns</td>
-                <td>He/Him/His</td>
-            </tr>
-            <tr>
-                <td>Phone</td>
-                <td>1(310)-713-5307</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>jafbird52@gmail.com</td>
-            </tr>
-            <tr>
-                <td>Degree</td>
-                <td>BS in Computer Science</td>
-            </tr>
-            <tr>
-                <td>Undergraduate</td>
-                <td>Cal Poly Pomona</td>
-            </tr>
-            <tr>
-                <td>Top 3 Languages</td>
-                <td>Python, C#, Java</td>
-            </tr>
-            <tr>
-                <td>Interested In</td>
-                <td>Information Retrieval, AI/ML, Data Science, Game Development, anything where I get to code</td>
-            </tr>
-            <tr>
-                <td>Likes</td>
-                <td>Cats, Learning, Outdoors, Gaming, Creating, Programming, Animation, Drawing</td>
-            </tr>
+<main>
 
+<section id="work" class="band">
+    <h2 class="band-title reveal">Selected work</h2>
+    <p class="band-sub reveal">Five things I built end to end. The project page has the full write-ups.</p>
 
-            <!-- Add more rows for additional information -->
-        </table>
+    <div class="work-grid">
+        <article class="work-card reveal" id="w1">
+            <span class="num">01</span>
+            <h3>Overnight job-hunt automation</h3>
+            <p>Scraped Glassdoor overnight with Selenium, stored thousands of listings in MongoDB, then ranked them
+               against my own resume with tf-idf vectors and cosine similarity.</p>
+            <p class="stack">Python &middot; MongoDB &middot; Selenium &middot; scikit-learn</p>
+            <p class="row"><a href="projects.html#p5">Read the write-up</a> <a href="https://github.com/jafurman/JobFinder" target="_blank" rel="noopener">Source</a></p>
+        </article>
+
+        <article class="work-card reveal" id="w2">
+            <span class="num">02</span>
+            <h3>Reddit crawler + neural-net image recognition</h3>
+            <p>A multithreaded crawler that pulled ~1.4k subreddits into a database, scraped them with Selenium when
+               the pages turned out to be dynamic, and scored each one for &ldquo;cat-likeness&rdquo;.</p>
+            <p class="stack">Python &middot; Flask &middot; MongoDB &middot; BeautifulSoup</p>
+            <p class="row"><a href="projects.html#p2">Read the write-up</a> <a href="https://github.com/jafurman/CatRedditCrawler-WebPage" target="_blank" rel="noopener">Source</a></p>
+        </article>
+
+        <article class="work-card reveal" id="w3">
+            <span class="num">03</span>
+            <h3>2D platformer with procedural generation</h3>
+            <p>Unity, C#, my own biased random-walk cavern generator on a 100&times;100 tilemap. Still getting updates
+               because it is the project I enjoy most.</p>
+            <p class="stack">Unity &middot; C# &middot; PCG</p>
+            <p class="row"><a href="https://jafurman.itch.io/9d" target="_blank" rel="noopener">Play it</a> <a href="projects.html#p1">Read the write-up</a> <a href="https://github.com/jafurman/2DPlatformer-with-Procedrual-Generation" target="_blank" rel="noopener">Source</a></p>
+        </article>
+
+        <article class="work-card reveal" id="w4">
+            <span class="num">04</span>
+            <h3>Spotify toolkit + genre-clustering playlist maker</h3>
+            <p>Pulled my own listening data through the Spotify API, normalised messy genre names with NLP, clustered
+               them and wrote three real playlists back to my account.</p>
+            <p class="stack">Python &middot; Spotify Web API &middot; pandas &middot; NLP</p>
+            <p class="row"><a href="projects.html#p3">Read the write-up</a> <a href="https://github.com/jafurman/SpotifyPlaylistMaker" target="_blank" rel="noopener">Source</a></p>
+        </article>
+
+        <article class="work-card reveal" id="w5">
+            <span class="num">05</span>
+            <h3>Faculty search engine for cpp.edu</h3>
+            <p>Group lead for a course search engine: crawl, scrape, inverted index with embedded tf-idf, cosine
+               similarity, results paginated five at a time.</p>
+            <p class="stack">Python &middot; MongoDB &middot; information retrieval</p>
+            <p class="row"><a href="projects.html#p4">Read the write-up</a> <a href="https://github.com/amehr2003/CS4250_Final_Project" target="_blank" rel="noopener">Source</a></p>
+        </article>
     </div>
 
-    <div class="contact-container">
-            <div class="contact-item" data-text="GitHub profile">
-                <a href="https://github.com/jafurman" target="_blank">
-                    <img src="githubIcon.png" alt="GitHub Icon">
-                </a>
-            </div>
+    <p class="band-foot reveal"><a class="btn ghost" href="projects.html">Long-form project page &rarr;</a></p>
+</section>
 
-            <div class="contact-item" data-text="LinkedIn profile">
-                <a href="https://www.linkedin.com/in/joshua-furman-7784221ab/" target="_blank">
-                    <img src="linkedinIcon.png" alt="LinkedIn Icon">
-                </a>
-            </div>
+<section id="since" class="band alt">
+    <h2 class="band-title reveal">What I have been building since 2024</h2>
+    <p class="band-sub reveal">This page last went up in May 2024. Here is what happened after that.</p>
 
-            <div class="contact-item" data-text="Itch.io profile">
-                <a href="https://jafurman.itch.io/" target="_blank">
-                    <img src="itchIcon.png" alt="itch.io Icon">
-                </a>
-            </div>
+    <div class="since-grid">
+        <article class="since-card reveal">
+            <h3>Job Scout &mdash; the 2024 job crawler, finished</h3>
+            <p>The project above, rebuilt for the browser as a single ~80&nbsp;KB file you can email someone. It ranks
+               postings against your r&eacute;sum&eacute; with TF-IDF cosine similarity, and with local AI embeddings
+               (all-MiniLM-L6-v2 through transformers.js) when Smart matching is on. Your r&eacute;sum&eacute; text
+               never leaves the machine.</p>
+        </article>
 
-            <div class="contact-item" data-text="Email me">
-                <p><a href="mailto:jafbird52@gmail.com">
-                    <img src="gmailIcon.png" alt="gmailIcon">
-                </a></p>
-            </div>
+        <article class="since-card reveal">
+            <h3>A two-GPU local AI rig, and what it runs</h3>
+            <p>An RTX 5060 Ti 16&nbsp;GB and an RTX 3060 12&nbsp;GB driven together with 128k context, fully offline.
+               I measured the layouts and wrote up which split gives which speed, then put the rig to work as a coding
+               partner that never sends my code to anyone.</p>
+        </article>
+
+        <article class="since-card reveal">
+            <h3>70+ browser games built with that rig</h3>
+            <p>A library of browser games and experiments &mdash; brawlers, racers, FPS, survival, platformers &mdash;
+               each one starting from a written spec (genre, loop, twist) before any code, and each one playable in a
+               browser. The 2D platformer with procedural generation above is where that pipeline grew from.</p>
+        </article>
+
+        <article class="since-card reveal">
+            <h3>Smudge Aquarium &mdash; a real .NET desktop app</h3>
+            <p>WPF on .NET 8 with a separate simulation core (fish behaviour, food, lighting, day/night) that has its
+               own test project, and a UI layer that draws 3D-shaped fish in a 2.5D tank. It runs on this desktop and
+               on the Raspberry Pi below.</p>
+        </article>
+
+        <article class="since-card reveal">
+            <h3>The Raspberry Pi hub screen</h3>
+            <p>A 24/7 Raspberry Pi with a 7-inch touch hub (Kivy, 1024&times;600): scene backgrounds you pick from the
+               screen, an animated cat that walks on the scene's own ledges, an aquarium display, and a page of the
+               browser games so the family can play them from a phone.</p>
+        </article>
+
+        <article class="since-card reveal">
+            <h3>Tools that actually get used</h3>
+            <p>Small apps I run daily rather than demos: a r&eacute;sum&eacute;-aware job scout, a notes board, a photo
+               editor, a budget tracker, a tip splitter, a PC-local web browser front end, and a Minecraft mod.</p>
+        </article>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2023 Joshua Furman</p>
+<section id="about" class="band">
+    <h2 class="band-title reveal">Quick facts</h2>
+
+    <div class="about-wrap reveal">
+        <div class="portrait">
+            <img src="headshot2.webp" alt="Joshua Furman" loading="lazy">
+            <p class="who">Joshua Furman <span>Software Developer</span></p>
+        </div>
+
+        <table class="facts">
+            <tr><th>Pronouns</th><td>He/Him/His</td></tr>
+            <tr><th>Phone</th><td><a href="tel:13107135307">1(310)-713-5307</a></td></tr>
+            <tr><th>Email</th><td><a href="mailto:jafbird52@gmail.com">jafbird52@gmail.com</a></td></tr>
+            <tr><th>Degree</th><td>BS in Computer Science</td></tr>
+            <tr><th>Undergraduate</th><td>Cal Poly Pomona</td></tr>
+            <tr><th>Top 3 languages</th><td>Python, C#, Java</td></tr>
+            <tr><th>Interested in</th><td>Information Retrieval, AI/ML, Data Science, Game Development, anything where I get to code</td></tr>
+            <tr><th>Likes</th><td>Cats, Learning, Outdoors, Gaming, Creating, Programming, Animation, Drawing</td></tr>
+        </table>
+    </div>
+</section>
+
+<footer id="contact" class="footer">
+    <h2 class="reveal">Say hello</h2>
+    <div class="social reveal">
+        <a href="https://github.com/jafurman" target="_blank" rel="noopener"><img src="githubIcon.webp" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/joshua-furman-7784221ab/" target="_blank" rel="noopener"><img src="linkedinIcon.webp" alt="LinkedIn"></a>
+        <a href="https://jafurman.itch.io/" target="_blank" rel="noopener"><img src="itchIcon.webp" alt="itch.io"></a>
+        <a href="mailto:jafbird52@gmail.com"><img src="gmailIcon.webp" alt="Email"></a>
+    </div>
+    <p class="fine">&copy; <span id="year">2026</span> Joshua Furman</p>
 </footer>
 
-
+</main>
 </body>
-
 </html>

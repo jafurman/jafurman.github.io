@@ -1,0 +1,14 @@
+# macOS leftovers
+.DS_Store
+
+# Smudge's screenshot scratch while working on the site
+.qa/
+.smudge/
+Art/
+
+# JetBrains settings that were committed in 2024
+.idea/
+
+# npm was only used to fetch three.js; vendor/three.module.js is what ships
+node_modules/
+package-lock.json

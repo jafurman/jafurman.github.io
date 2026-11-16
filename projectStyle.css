@@ -1,252 +1,180 @@
-/* Reset Styles */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
+/* projectStyle.css — the specifics of the long-form project page.
+   The shared shell (background, topbar, bands, buttons, reveal) lives in style.css,
+   which projects.html also loads. Nothing here uses a fixed pixel width: a fixed
+   width plus padding is what made this page wider than a phone. */
+
+.page-head {
+    padding: clamp(34px, 6vw, 70px) 0 0;
 }
 
-/* Body Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a2d;
-    color: #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
-    margin: 0;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-nav {
-    background-color: #000;
-    padding: 18px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    border-bottom: 1.3px solid #333;
-    position: relative;
-    z-index: 1;
-}
-
-nav h1 {
-    font-family: 'Arial', sans-serif;
-    color: #ddd;
-    margin-left: 50px;
-    font-size: 28px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav a {
-    padding: 10px;
-    background-color: #0077cc;
-    color: #ddd;
-    border: none;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-nav a:hover {
-    background-color: #005080;
+.page-head h1 {
+    font-size: clamp(26px, 4.6vw, 42px);
     color: #fff;
+    letter-spacing: -0.01em;
 }
 
-nav ul li {
-    display: inline-flex;
-    align-items: center;
-        margin-left: 20px;
-        margin-right: 20px;
+.page-head p {
+    margin-top: 8px;
+    color: #a9a9c0;
+    max-width: 62ch;
 }
 
-nav button {
-    padding: 10px;
-    background-color: #0077cc;
-    color: #ddd;
-    border: none;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
+/* project directory as a chip row */
+.directory {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.directory a {
+    display: inline-block;
+    padding: 8px 13px;
+    font-size: 14px;
     text-decoration: none;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: #cfd6e6;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #33334f;
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-nav button:hover {
-    background-color: #005080;
-    color: #fff;
+.directory a:hover {
+    background: rgba(47, 127, 196, 0.25);
+    border-color: #4a5f80;
+    color: #eaf4ff;
+    transform: translateY(-2px);
 }
 
-h2 {
-    font-size: 36px;
-    margin-top: 40px;
-    color: #333; /* Darken the text color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Soften the text shadow */
-}
-
-/* Project Container */
+/* one project card */
 .project {
-    width: 1000px; /* Change width to maximum width */
-    background-color: #f5f5f5; /* Lighten the background color */
-    color: #333; /* Darken the text color */
-    padding: 30px; /* Increase padding */
-    margin: 20px auto; /* Center the project container */
-    border-radius: 15px; /* Increase border radius */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soften the box shadow */
+    margin-top: 26px;
+    padding: 24px clamp(16px, 3vw, 28px);
+    background: rgba(35, 35, 58, 0.88);
+    border: 1px solid #33334f;
+    border-radius: 14px;
+    color: #dfe1ec;
+    scroll-margin-top: 84px;
 }
 
-/* Project Titles */
 .project h3 {
-    color: #0077cc;
-    margin-bottom: 15px; /* Increase margin bottom */
-    font-size: 32px; /* Increase the font size for project titles */
+    color: #8fd0ff;
+    font-size: clamp(19px, 2.6vw, 25px);
+    line-height: 1.25;
+    margin-bottom: 12px;
 }
 
-.project h4 {
-    font-size: 18px; /* Increase font size */
-    color: #555; /* Darken text color */
-    margin-bottom: 10px; /* Increase margin bottom */
-}
-
-/* Project Description */
-.project p {
-    font-size: 18px; /* Decrease font size slightly */
-    line-height: 1.6;
-    color: #555; /* Darken text color */
-    margin-bottom: 10px; /* Increase margin bottom */
-    padding: 20px; /* Increase padding */
-    background-color: #fff; /* Change background color to white */
-    border: 1px solid #ddd;
-    border-radius: 8px; /* Decrease border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Project Links */
-.project li {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.project a {
-    color: #0077cc;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.project-images {
-    display: flex;
-    flex-wrap: wrap; /* Allow images/videos to wrap to the next line */
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+/* his "What was used / Source Code" lines were bare <li> tags: make them chips */
+.project > li {
+    display: inline-block;
+    list-style: none;
+    margin: 4px 8px 8px 0;
+    padding: 6px 11px;
+    font-size: 14px;
+    color: #b9bdd0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #3a3a5c;
+    border-radius: 8px;
+    word-break: break-word;
     max-width: 100%;
 }
 
-.project-images img,
-.project-images video {
-    width: 750px; /* Set a fixed width for all images/videos */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px;
-    margin-bottom: 10px;
+.project > li a { font-size: 14px; word-break: break-all; }
+
+/* the write-up */
+.case {
+    margin-top: 12px;
+    padding: 18px clamp(12px, 2.4vw, 20px);
+    background: rgba(16, 16, 30, 0.6);
+    border: 1px solid #2f2f4d;
+    border-radius: 12px;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 800px) {
-    .project {
-        margin: 10px;
-    }
+.case p {
+    padding: 0 0 14px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #dfe1ec;
+}
 
-    .project-images {
-        flex-direction: column;
-        align-items: center;
-    }
+.case p:last-child { padding-bottom: 0; }
 
-    .project-images img {
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-    }
+.case strong { color: #8fd0ff; }
+
+/* button row under each write-up */
+.button {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 button {
-    padding: 10px;
-    background-color: #0077cc; /* Dark blue button, matching the navigation link hover color */
-    color: #ddd; /* Light text to match the body text color */
-    border: none;
+    padding: 9px 15px;
+    font: inherit;
+    font-size: 14px;
+    color: #eaf4ff;
+    background: rgba(47, 127, 196, 0.22);
+    border: 1px solid #3f5f85;
+    border-radius: 999px;
     cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    margin-top: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-button:hover {
-    background-color: #004670; /* Slightly darker shade of blue */
-    color: #fff; /* White text on hover */
+button:hover { background: rgba(47, 127, 196, 0.42); transform: translateY(-1px); }
+
+/* media: one item visible at a time */
+.project-images {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
 }
 
-.button {
-    margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-
+.project-images .video {
+    width: 100%;
+    max-width: 760px;
 }
+
+.project-images img,
+.project-images video,
+.project-images iframe {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid #3a3a5c;
+    border-radius: 12px;
+    background: #0d0d1a;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.project-images iframe { border: 0; }
 
 .buttons {
+    margin-top: 12px;
     display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-}
-
-.buttons button {
-    padding: 10px;
-    background-color: #005080; /* Slightly darker blue */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    margin: 5px; /* Adjust margin as needed */
-    border-radius: 5px;
-}
-
-.buttons button:hover {
-    background-color: #003b5a; /* Darker blue on hover */
-}
-
-.video {
-    display: flex;
-    flex-wrap: wrap; /* Allow images/videos to wrap to the next line */
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    max-width: 100%;
-    margin-bottom: 10px;
+    gap: 8px;
 }
 
-.project-images video {
-    max-width: 100%; /* Ensure videos don't exceed container width */
-    height: auto; /* Allow videos to maintain aspect ratio */
-    border-radius: 5px;
-    margin-bottom: 10px;
+.buttons button:disabled {
+    background: #2f7fc4;
+    border-color: #2f7fc4;
+    color: #fff;
+    cursor: default;
+    transform: none;
+}
+
+.page-foot {
+    padding: clamp(40px, 7vw, 80px) 0 60px;
+    text-align: center;
+    color: #8f8fa8;
+}
+
+.page-foot a { font-size: 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .directory a:hover, button:hover { transform: none; }
 }
