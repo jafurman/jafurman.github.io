@@ -5,7 +5,6 @@
 const host = document.getElementById('hero');
 if (host) import('three').then(THREE => start(THREE)).catch(() => host.classList.add('still'));
 function start(T) {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let renderer;
   try { renderer = new T.WebGLRenderer({antialias:true, alpha:true}); }
   catch { host.classList.add('still'); return; }
@@ -28,7 +27,7 @@ function start(T) {
   group.add(tiles);
   const cursor = new T.Mesh(new T.PlaneGeometry(1.8,1.8),new T.MeshBasicMaterial({color:'#d6fff0'}));
   group.add(cursor);
-  let x=50,y=50,count=0,steps=0,finished=false,paused=reduced,visible=true;
+  let x=50,y=50,count=0,steps=0,finished=false,paused=false,visible=true;
   const visited = new Set();
   const label=document.getElementById('walk-status'), pause=document.getElementById('walk-pause');
   function updateLabel(){label.textContent=`${count.toLocaleString()} cells carved · ${finished?'edge reached':paused?'paused':'walking'}`;}
@@ -43,7 +42,7 @@ function start(T) {
   }
   function draw(){cursor.position.set(x-50,y-50,1);tiles.instanceColor.needsUpdate=true;renderer.render(scene,camera);updateLabel();}
   function reset(){for(const i of visited)tiles.setColorAt(i,dark);visited.clear();x=y=50;count=steps=0;finished=false;
-    if(reduced){for(let i=0;i<300000&&!finished;i++)step();}draw();}
+    draw();}
   function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);const aspect=w/h;
     camera.left=-55*aspect;camera.right=55*aspect;camera.top=55;camera.bottom=-55;camera.updateProjectionMatrix();
     group.position.x=w>760?Math.min(55*aspect*.48,48):0;group.rotation.z=-.12;draw();}
